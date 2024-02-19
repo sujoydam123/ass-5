@@ -4,10 +4,10 @@ let count = 0;
 let ticketnumber = []
 for (const seat of allSeat) {
     seat.addEventListener('click', function (e) {
-        count += 1;   
+        count += 1;
         ticketnumber.push(seat);
         const cuppanButton = document.getElementById('cuppon-button')
-        if(ticketnumber.length === 4){
+        if (ticketnumber.length === 4) {
             cuppanButton.removeAttribute('disabled', true)
         }
 
@@ -66,7 +66,7 @@ for (const seat of allSeat) {
 
 
         for (const number of ticketnumber) {
-            console.log(number)
+            // console.log(number)
 
         }
         const btn = document.getElementById('btn')
@@ -91,28 +91,67 @@ for (const seat of allSeat) {
     function setInnerText(id, value) {
         document.getElementById(id).innerText = value;
     }
-} 
+}
 const cuponAplyButton = document.getElementById('cuppon-button');
-    // const ticketPrice = document.getElementById('ticket-price').innerText
-    // const previousTicketTotalString = document.getElementById('total-price').innerText;
-    // const previousTicketTotal = parseInt(previousTicketTotalString);
-    // const totalPrice = previousTicketTotal + parseInt(550);
-    // console.log(totalPrice)
-    const new15cuppon = document.getElementById('disount1').innerText
-    cuponAplyButton.addEventListener('click', function (){
+// const ticketPrice = document.getElementById('ticket-price').innerText
+// const previousTicketTotalString = document.getElementById('total-price').innerText;
+// const previousTicketTotal = parseInt(previousTicketTotalString);
+// const totalPrice = previousTicketTotal + parseInt(550);
+// console.log(totalPrice)
+const new15cuppon = document.getElementById('disount1').innerText
+cuponAplyButton.addEventListener('click', function () {
     const cuponInputValue = document.getElementById('cupon-value').value;
-    if(cuponInputValue === 'NEW 15'){
+    const totalPriceString = document.getElementById('total-price').innerText;
+    const totalPrice = parseInt(totalPriceString)
+    // console.log(typeof totalPrice)
+    if (cuponInputValue === 'NEW 15') {
+        const couponValueDiv = document.getElementById('coupon-value-div');
+        const p6 = document.createElement('p');
+        const p4 = document.createElement('p')
+        p6.innerText = 'Total Discount'
         const discount = totalPrice * 0.15;
-        // const totalDiscount = totalPrice - discount;
-        console.log(discount)
-    }else if(cuponInputValue === 'Couple 20'){
-        const discount2 = totalPrice * 0.02;
-        const totalDiscount2 = totalPrice - discount2;
-        console.log(totalDiscount2)
-    }else{
+        // console.log(discount)
+        p4.innerText = discount;
+        couponValueDiv.appendChild(p6)
+        couponValueDiv.appendChild(p4)
+        const orderTotalString = document.getElementById('grand-total').innerText;
+        const orderTotal = parseInt(orderTotalString)
+        // console.log(orderTotal)
+        const grandTotal = totalPrice - discount;
+        // console.log(grandTotal)
+        document.getElementById('grand-total').innerText = grandTotal
+    } else if (cuponInputValue === 'Couple 20') {
+        const couponValueDiv = document.getElementById('coupon-value-div');
+        const discount2 = totalPrice * 0.2;
+        const p7 = document.createElement('p')
+        p7.innerText = "Total Discount"
+        const p5 = document.createElement('p');
+        p5.innerText = discount2;
+        couponValueDiv.appendChild(p7)
+        couponValueDiv.appendChild(p5)
+        const orderTotalString = document.getElementById('grand-total').innerText;
+        const orderTotal = parseInt(orderTotalString)
+        // console.log(orderTotal)
+        const grandTotal = totalPrice - discount2;
+        // console.log(grandTotal)
+        document.getElementById('grand-total').innerText = grandTotal
+        // console.log(discount2)
+    } else {
         alert('please add right discount code')
     }
-    console.log(cuponInputValue)
-    console.log(new15cuppon)
+    const cuponField = document.getElementById('cupon-field');
+    const cuponClassList = cuponField.classList.add('hidden')
 
+    // const p4 = createElement('p');
+    // p4.innerText = discount;
+    // const p5 = createElement('p');
+    // p5.innerText = discount2;
+    // couponValueDiv.appendChild(p4)
+    // couponValueDiv.appendChild(p5)
+    // const orderTotalString = document.getElementById('grand-total').innerText;
+    // const orderTotal = parseInt(orderTotalString)
+    // console.log(orderTotal)
+    // const grandTotal = totalPrice - ;
+    // console.log(grandTotal)
+    // document.getElementById('grand-total').innerText = grandTotal
 })

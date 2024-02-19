@@ -13,7 +13,7 @@ for (const seat of allSeat) {
 
 
         if (ticketnumber.length > 4) {
-            alert('youe do not biy more ticket now')
+            alert('you do not buy more ticket now')
             return;
         }
 
@@ -137,7 +137,8 @@ cuponAplyButton.addEventListener('click', function () {
         document.getElementById('grand-total').innerText = grandTotal
         // console.log(discount2)
     } else {
-        alert('please add right discount code')
+        alert('please add right cupon code')
+        return;
     }
     const cuponField = document.getElementById('cupon-field');
     const cuponClassList = cuponField.classList.add('hidden')
